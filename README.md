@@ -13,7 +13,8 @@
 </div>
 
 This crate provides cache line size fitting optimizations to fields in structs.
-This crate adds aligns fields `#[repr(align(COHERENCE_LINE_SIZE))]` to have. 
+
+This crate aligns fields with `#[repr(align(COHERENCE_LINE_SIZE))]` to decrease the time between prefetch signals for data. 
 `COHERENCE_LINE_SIZE` can be detected or decided based on the architecture by `cuneiform` itself.
 
 ```toml
