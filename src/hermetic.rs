@@ -1,7 +1,19 @@
+//!
+//! Hermetic enables cuneiform to detect cache sizes from OSes which have API to fetch.
+//!
+//! Currently, hermetic argument works only Linux kernel 2.6.32 and above.
+//! If system is different than supported systems it falls back to slabs.
+
 use core::fmt;
 use core::ops::{Deref, DerefMut};
 use cuneiform::cuneiform;
 
+///
+/// Applies padding hermetically detected by cuneiform.
+///
+/// If OS exposes an API to detect coherence line size this padding
+/// type is using that amount to align the field with padding.
+///
 #[cuneiform(hermetic = true)]
 #[derive(Clone, Copy, Default, Hash, PartialEq, Eq)]
 pub struct HermeticPadding<T> {
@@ -13,9 +25,6 @@ unsafe impl<T: Sync> Sync for HermeticPadding<T> {}
 
 impl<T> HermeticPadding<T> {
     /// Applies padding hermetically detected by cuneiform.
-    ///
-    /// If OS exposes an API to detect coherence line size this padding
-    /// type is using that amount to align the field with padding.
     ///
     /// # Examples
     ///

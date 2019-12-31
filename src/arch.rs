@@ -1,7 +1,25 @@
+//!
+//! Architecture system uses default Rust supported platforms and architectures.
+//!
+//! Alignment values are not randomly chosen or incorporated directly.
+//! Values are considered and incorporated inside with the mindset of preventing false sharing
+//! or creating less warp points in exclusive caching.
+//!
+//! Please head to the documentation of [Cuneiform](https://docs.rs/cuneiform/0.1.0/src/cuneiform/slabs.rs.html#5) for more info.
+
 use core::fmt;
 use core::ops::{Deref, DerefMut};
 use cuneiform::cuneiform;
 
+///
+/// Applies padding based on the architecture detected by cuneiform.
+/// This struct allows us to have padding on only wrapped field.
+///
+/// Cache line size is determined by a few steps:
+/// * It checks the current compiler architecture is already known by cuneiform.
+///     * If known it applies that value as alignment for the field.
+/// * If it is still not detected then fallback padding will be used.
+///
 #[cuneiform(hermetic = false)]
 #[derive(Clone, Copy, Default, Hash, PartialEq, Eq)]
 pub struct ArchPadding<T> {
@@ -13,11 +31,6 @@ unsafe impl<T: Sync> Sync for ArchPadding<T> {}
 
 impl<T> ArchPadding<T> {
     /// Applies padding based on the architecture detected by cuneiform.
-    ///
-    /// Cache line size is determined by a few steps:
-    /// * It checks the current compiler architecture is already known by cuneiform.
-    ///     * If known it applies that value as alignment for the field.
-    /// * If it is still not detected then fallback padding will be used.
     ///
     /// # Examples
     ///

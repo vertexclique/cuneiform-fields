@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img src="https://github.com/vertexclique/cuneiform/raw/master/img/cuneiform-logo.png" width="200" height="200"/>
+    <img src="https://github.com/vertexclique/cuneiform-fields/raw/master/img/cuneiform-logo.png" width="200" height="200"/>
 </h1>
 <div align="center">
  <strong>
@@ -27,6 +27,8 @@ cuneiform_fields = "0.1"
 #### Hermetic aligned fields
 Align by hermetic cache line size detection mentioned in [cuneiform readme](https://github.com/vertexclique/cuneiform#----):
 ```rust
+use cuneiform_fields::prelude::*;
+
 pub struct Hermetic {
     data: HermeticPadding<u8>,
     data_2: u16,
@@ -38,6 +40,8 @@ In the example above `data` will be aligned by hermetic alignment but field `dat
 Align by cache line size detected by current Rust compiler architecture.
 If architecture isn't detected in known architectures it will fall back to default alignment:
 ```rust
+use cuneiform_fields::prelude::*;
+
 pub struct ArchSpecific {
     data: ArchPadding<u8>,
     data_2: u16,
