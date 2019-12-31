@@ -1,0 +1,34 @@
+[package]
+name = "cuneiform-fields"
+version = "0.1.0"
+description = "Field level [no_std] cache optimizations for Rust."
+authors = ["Mahmut Bulut <vertexclique@gmail.com>"]
+keywords = ["cache", "optimizations", "architecture", "cache-optimizations", "no_std"]
+categories = ["concurrency", "data-structures", "algorithms"]
+homepage = "https://github.com/vertexclique/cuneiform-fields"
+repository = "https://github.com/vertexclique/cuneiform-fields"
+documentation = "https://docs.rs/cuneiform-fields"
+readme = "README.md"
+license = "Apache-2.0/MIT"
+edition = "2018"
+exclude = [
+	".github/*",
+	"examples/*",
+	"graphstore/*",
+	"tests/*",
+	"img/*",
+	"ci/*",
+	"benches/*",
+	"doc/*",
+	"*.png",
+	"*.dot",
+	"*.yml",
+	"*.toml",
+	"*.md"
+]
+
+[dependencies]
+cuneiform = "0.1"
+
+[dev-dependencies]
+trybuild = "1.0"
