@@ -1,6 +1,6 @@
 [package]
 name = "cuneiform-fields"
-version = "0.1.0"
+version = "0.1.1-alpha.0"
 description = "Field level [no_std] cache optimizations for Rust."
 authors = ["Mahmut Bulut <vertexclique@gmail.com>"]
 keywords = ["cache", "optimizations", "architecture", "cache-optimizations", "no_std"]
