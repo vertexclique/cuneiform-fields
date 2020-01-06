@@ -19,7 +19,7 @@ This crate aligns fields with `#[repr(align(COHERENCE_LINE_SIZE))]` to decrease 
 
 ```toml
 [dependencies]
-cuneiform_fields = "0.1"
+cuneiform-fields = "0.1"
 ```
 
 ## Examples
