@@ -47,6 +47,7 @@
 #![warn(missing_debug_implementations)]
 #![no_std]
 
+pub mod alignas;
 pub mod arch;
 pub mod hermetic;
 
